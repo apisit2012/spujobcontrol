@@ -8,7 +8,7 @@ import Account from './Account';
 
 
 export default function Navigation() {
-
+  
   const Tab = createBottomTabNavigator();
 
   return (

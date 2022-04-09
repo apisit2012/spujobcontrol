@@ -1,7 +1,13 @@
-import { HTTP_DASHBOARD_FETCHING } from "../constant"
+import { HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FETCHING, HTTP_DASHBOARD_SUCCESS } from "../constant"
 
 const initialState = {
-    dashboard:[],
+    dashboard:{
+      pending:{count:0},
+      followapprove:{count:0},
+      closejob:{count:0},
+      total:{count:0},
+    },
+    
     isFetching:false,
     isError:false
 }
@@ -11,6 +17,12 @@ export default (state = initialState, { type, payload }) => {
 
   case HTTP_DASHBOARD_FETCHING:
     return { ...state, isFetching:true, isError:false }
+
+  case HTTP_DASHBOARD_SUCCESS:
+    return { ...state, dashboard:payload, isFetching:false, isError:false }
+
+  case HTTP_DASHBOARD_FAIL:
+    return { ...state, isFetching:false, isError:true }
 
   default:
     return state

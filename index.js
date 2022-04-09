@@ -1,18 +1,15 @@
-/**
- * @format
- */
-
- import * as React from 'react';
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
-
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as React from 'react';
+import { AppRegistry } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
-import thunk from 'redux-thunk';
-import reducer from './src/reducer';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { name as appName } from './app.json';
+import App from './App';
+
+
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import reducer from './src/reducer';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
@@ -27,5 +24,6 @@ export default function Main() {
       </Provider>
   );
 }
+
 
 AppRegistry.registerComponent(appName, () => Main);
