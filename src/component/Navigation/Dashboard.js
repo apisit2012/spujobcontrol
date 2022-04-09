@@ -14,7 +14,7 @@ export default function Dashboard() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName='dashboardSub' >
+    <Stack.Navigator initialRouteName='dashboardSubDashboard' >
       <Stack.Screen name='dashboardSubDashboard' component={DashboardScreen} options={OptionSub.dashboard}/>
       <Stack.Screen name='detailSubDashboard' component={DetailScreen} />
       <Stack.Screen name='reportSubDashboard' component={ReportScreen} />
@@ -23,10 +23,10 @@ export default function Dashboard() {
   )
 }
 
-export const OptionAccount = {
+export const OptionDashboard = {
   tabBarLabel: 'Dashboard',
   tabBarIcon: ({color}) => (
-    <MaterialCommunityIcons name="account-circle" color={color} size={26} />
+    <MaterialCommunityIcons name="view-dashboard" color={color} size={26} />
   ),
   headerShown:false
 }
