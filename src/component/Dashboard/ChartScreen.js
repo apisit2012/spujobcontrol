@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function ChartScreen() {
   return (
-    <View style={{width: 390,height: 150,backgroundColor: '#fff',marginTop: 5,marginBottom: 3}}>
+    <View style={{width: 420,height: 150,backgroundColor: '#fff',marginTop: 5,marginBottom: 3}}>
                         <View style={{display: 'flex', flexDirection: 'row',width: 390,justifyContent: 'center',alignItems: 'center'}}>
                           <View>
                             <Text>Monthly Chart</Text>

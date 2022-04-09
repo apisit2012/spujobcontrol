@@ -20,7 +20,7 @@ export default function Add() {
 export const OptionAdd = {
   tabBarLabel: 'Add',
   tabBarIcon: ({color}) => (
-    <MaterialCommunityIcons name="view-dashboard" color={color} size={26} />
+    <MaterialCommunityIcons name="plus-circle-outline" color={color} size={26} />
   ),
   headerShown:false
 }

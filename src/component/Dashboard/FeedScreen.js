@@ -3,27 +3,35 @@ import { useSelector } from 'react-redux'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import React from 'react'
 
-export default function FeedScreen({status, count}) {
+export default function FeedScreen({name, count, onChangeButton}) {
 
   const dashboardReducer = useSelector(({dashboardReducer}) => dashboardReducer);
 
+  const [data, setDate] = React.useState('')
+
+  const conSelectDetail = () =>{
+    setDate(name)
+    onChangeButton(data)
+  }
+
   return (
             <TouchableOpacity
+              onPress={()=> conSelectDetail()}
               style={{borderRadius: 20,width: 85,height: 40, backgroundColor:'#fafafa',display: 'flex',justifyContent: 'center',alignItems: 'center',margin: 5}}>
-              <Text style={{fontSize: 11, fontWeight: 'bold' }}>{status}</Text>               
+              <Text style={{fontSize: 11, fontWeight: 'bold' }}>{name}</Text>               
               <View style={{display: 'flex',flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center', width:30}}>
-                <MaterialCommunityIcons name={ status == "pending" 
+                <MaterialCommunityIcons name={ name == "pending" 
                                               ?  "clipboard-clock"
-                                              :  status == "follow" 
+                                              :  name == "follow" 
                                               ?  "bell-plus"
-                                              :  status == "closejob"
+                                              :  name == "closejob"
                                               ?  "book-check"
                                               :  "briefcase-check" }  color={ 
-                                                                              status == "pending" 
+                                                                              name == "pending" 
                                                                               ?  "#A52A2A"
-                                                                              :  status == "follow" 
+                                                                              :  name == "follow" 
                                                                               ?  "#1E90FF"
-                                                                              :  status == "closejob"
+                                                                              :  name == "closejob"
                                                                               ?  "#32CD32"
                                                                               :  "#FFA500"} />
               <Text style={{fontSize: 10, fontWeight: 'bold'}} >{count}</Text>
