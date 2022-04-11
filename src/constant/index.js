@@ -7,6 +7,7 @@ export const HTTP_ACCOUNT_SUCCESS = 'HTTP_ACCOUNT_SUCCESS'
 export const HTTP_ACCOUNT_FAIL = 'HTTP_ACCOUNT_FAIL'
 
 export const DASHBOARD_REFRESH = 'DASHBOARD_REFRESH'
+export const SETCOMPONENT = 'SETCOMPONENT'
 
 
 const ipaddress = "http://172.29.24.39:8089"
@@ -26,9 +27,11 @@ export const Server = {
     // Dashboard
     dashboard:`${ipaddress}/dashboard/dashboard`,
 
-
     // Search Assign
     searchAssign:`${ipaddress}/authen/findaccounttoassignjob`,
 
+
+    // Search Assign
+    searchComponent:`${ipaddress}/component/findcomponent`,
 
 }

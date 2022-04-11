@@ -20,6 +20,7 @@ export default  function EventetailScreen({navigation,route}) {
 
   const usedispatch = useDispatch()
 
+  
 
 
   const fetchAssing = () => {
@@ -28,13 +29,10 @@ export default  function EventetailScreen({navigation,route}) {
     })
   }
 
-  console.log(userAssing);
-
 
   React.useEffect(()=>{
     fetchAssing()
     setData({...data, id_emp:accountReducer.account.id_emp, emp_assign:accountReducer.account.id_emp})
-
     route.params.result[0].bom != 'null'
     ? setData({...data,use_bom:true})
 
@@ -61,8 +59,8 @@ export default  function EventetailScreen({navigation,route}) {
     ? api = Server.closejobEvent
     : "ooo"
 
-      console.log(accountReducer.account.id_emp);
-    console.log(data);
+    setData({...data, id_emp:accountReducer.account.id_emp, emp_assign:accountReducer.account.id_emp})
+
     axios.post(api,data).then(response=>{
       response.data.result == "OK"
       ? Alert.alert("OK","บันทึกข้อมูลสำเร็จ")
@@ -197,9 +195,9 @@ export default  function EventetailScreen({navigation,route}) {
                       : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 3
                       ? <ButtonClosejbo />
                       : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 4
-                      ? <ButtonClosejbo />
+                      ? <View></View>
                       : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 5
-                      ? <ButtonClosejbo />
+                      ? <View></View>
                       : <View></View>
                     } 
               </View>

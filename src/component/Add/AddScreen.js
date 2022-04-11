@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { View, Text, TouchableOpacity , TextInput} from 'react-native'
+import { View, Text, TouchableOpacity , TextInput, Alert} from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import DatePicker from 'react-native-date-picker';
 import {Picker} from '@react-native-picker/picker';
@@ -21,11 +21,27 @@ export default function AddScreen({navigation}) {
   const [component, setComponent] = React.useState([]);
 
   const accountReducer = useSelector(({accountReducer}) => accountReducer);
+  const componentReducer = useSelector(({componentReducer}) => componentReducer);
+
+  const addevent = async () => {
+    await setData({...data, id_model:componentReducer.component.id_model})
+    if(data.use_bom == true && data.bom == null){
+      Alert.alert("Error","กรุณาเลือกวันที่ Bom")
+    } else if (data.use_xy_data == true && data.xy_data == null) {
+      Alert.alert("Error","กรุณาเลือกวันที่ XY Data")  
+    } else if (data.use_st_lasermark == true && data.st_laser == null){
+      Alert.alert("Error","กรุณาเลือกวันที่ XY Data")     
+    } else {
+      console.log(data);
+      axios.post(Server.addEvent,data).then(response=>{
+        Alert.alert("Success","บันทึกข้อมูลสำเร็จ")
+      })
+    }
+  }
 
   const [data, setData] = React.useState({
     id_emp: accountReducer.account.id_emp,
     id_jobtype: 1,
-    id_model: null,
     id_line: 1,
     workorder: '5000',
     barc_rules: false,
@@ -40,6 +56,8 @@ export default function AddScreen({navigation}) {
     use_xy_data: false,
     use_st_lasermark: false,
   });
+
+
 
   React.useEffect(()=>{
     axios.post(Server.jobtypenameline).then(response=>{
@@ -79,6 +97,7 @@ export default function AddScreen({navigation}) {
             Apisit Phunobthong
           </Text>
           <TouchableOpacity
+            onPress={()=>addevent()}
             style={{
               backgroundColor: '#0066FF',
               width: 60,
@@ -156,7 +175,7 @@ export default function AddScreen({navigation}) {
               alignItems: 'center',
             }}>
             <Text style={{width: 105, fontWeight: 'bold'}}>Component : </Text>
-            <Text style={{width: 225}}>{data.name_component}</Text>
+            <Text style={{width: 225, left:15}}>{componentReducer.component.component}</Text>
             <Text style={{width: 20}}>
               <MaterialCommunityIcons
               onPress={()=> navigation.navigate("searchSubAdd",{data:component})}

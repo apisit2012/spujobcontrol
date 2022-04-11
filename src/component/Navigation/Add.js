@@ -8,6 +8,7 @@ import AddScreen from '../Add/AddScreen'
 
 export default function Add() {
 
+
   const Stack = createNativeStackNavigator()
 
   return (
@@ -17,6 +18,8 @@ export default function Add() {
     </Stack.Navigator>
   )
 }
+
+
 
 export const OptionAdd = {
   tabBarLabel: 'Add',

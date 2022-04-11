@@ -44,12 +44,13 @@ export default function DashboardScreen({navigation,route}) {
       : SetPost(data.total.data)
     }
 
-
-
-
-    const onPressDetail = async (data) => {
-      const result = await post.filter((res)=>res.id_event == data)
-      await navigation.navigate("EventetailScreenSubDashboard",{result})
+    const onPressDetail = async (text) => {
+      console.log(text);
+      let result = await post.filter((res)=>res.id_event == text)
+      result[0].id_emp = accountReducer.account.id_emp
+      if(result.length > 0){
+        await navigation.navigate("EventetailScreenSubDashboard",{result})
+      }
     }
 
 
