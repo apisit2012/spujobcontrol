@@ -2,6 +2,7 @@ import { View, Text , Image, TouchableOpacity, TextInput, Alert} from 'react-nat
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Server } from '../../constant';
+import {Picker} from '@react-native-picker/picker';
 import axios from 'axios';
 import * as dashboardAction from '../../action/dashboardAction'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -15,22 +16,49 @@ export default  function EventetailScreen({navigation,route}) {
   const [dates, setDates] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
   const [select, setSelect] = React.useState();
+  const [userAssing, setUserAssing] = React.useState([]);
 
   const usedispatch = useDispatch()
 
+
+
+  const fetchAssing = () => {
+    axios.post(Server.searchAssign).then(response=>{
+      setUserAssing(response.data.message)
+    })
+  }
+
+  console.log(userAssing);
+
+
   React.useEffect(()=>{
-    setData({...data, id_emp:accountReducer.account.id_emp})
+    fetchAssing()
+    setData({...data, id_emp:accountReducer.account.id_emp, emp_assign:accountReducer.account.id_emp})
+
+    route.params.result[0].bom != 'null'
+    ? setData({...data,use_bom:true})
+
+    : route.params.result[0].xy_data != 'null'
+    ? setData({...data,use_xy_data:true})
+
+    : route.params.result[0].st_laser != 'null'
+    ? setData({...data,use_st_lasermark:true})
+
+    : data
+
   },[])
 
   const onChange = async (bt) => {
     let api;
     await bt
       bt == 'edit'
-    ? ""
+    ? api = Server.reviewEvent
     : bt == 'review'
     ? api = Server.reviewEvent
     : bt == 'approve'
     ? api = Server.approveEvent
+    : bt == 'closejob'
+    ? api = Server.closejobEvent
     : "ooo"
 
       console.log(accountReducer.account.id_emp);
@@ -43,8 +71,6 @@ export default  function EventetailScreen({navigation,route}) {
       navigation.goBack()
     })
   }
-
-
 
 
   // Button
@@ -86,8 +112,6 @@ export default  function EventetailScreen({navigation,route}) {
       <Text style={{color:'#fff', fontWeight:'bold', fontSize:12}} >Reject</Text>
     </TouchableOpacity>
   )
-
-
 
 
   return (
@@ -222,6 +246,32 @@ export default  function EventetailScreen({navigation,route}) {
                 style={{borderWidth:.5, width: 380, height:100, textAlignVertical: 'top'}}/>
             </View>
 
+            <View style={{marginTop:20,width: 380, display:'flex',justifyContent:'flex-start',flexDirection:'row', height:50}}>
+
+              {accountReducer.account.level == 2 &&( route.params.result[0].id_status_flow == 1 || route.params.result[0].id_status_flow == 2)
+              ?(
+                  <View style={{display:'flex',flexDirection:'row', height:50}}>
+                  <Text style={{fontSize:13, fontWeight:'bold', top:17}}>Assign To : </Text>
+                  <Picker
+                      selectedValue={data.assign_to}
+                      style={{width:255, height:30, borderWidth:1}}
+                      onValueChange={(itemValue, itemIndex) =>
+                        setData({...data, assign_to: itemValue})
+                      }>
+                      {userAssing.map((value, index) => (
+                        <Picker.Item
+                          label={value.name}
+                          value={value.id_emp}
+                          key={index}
+                          style={{fontSize:13}}
+                        />
+                      ))}
+                    </Picker>
+                </View>
+              ) : <View style={{display:'flex',flexDirection:'row', height:50}}></View>
+              }   
+            </View>
+
             <View style={{width: 380, marginTop:30, display:'flex', justifyContent:'flex-start',alignItems:'flex-start'}}>
               <Text style={{fontSize:15, fontWeight:'bold'}}>Detail</Text>
 
@@ -264,6 +314,9 @@ export default  function EventetailScreen({navigation,route}) {
 
             </View>
 
+
+            {/* Date Bom */}
+            <View style={{marginTop:10}}></View>
             <DatePicker
             modal
             mode="date"

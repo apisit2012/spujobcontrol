@@ -4,7 +4,7 @@ const initialState = {
     account:{
         id_emp:'2498',
         name:'apisit phunobthong',
-        level:1
+        level:2
     },
     isfetching:false,
     isError:false

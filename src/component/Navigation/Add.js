@@ -1,8 +1,9 @@
 import React from 'react'
+import { View, Text } from 'react-native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import SearchScreen from '../Add/SearchScreen'
+import SearchScreen, {OptionSubAddSearch} from '../Add/SearchScreen'
 import AddScreen from '../Add/AddScreen' 
 
 export default function Add() {
@@ -12,7 +13,7 @@ export default function Add() {
   return (
     <Stack.Navigator initialRouteName='addSubAdd'>
       <Stack.Screen name='addSubAdd'  component={AddScreen} />
-      <Stack.Screen name='searchSubAdd'  component={SearchScreen} />
+      <Stack.Screen name='searchSubAdd'  component={SearchScreen} options={OptionSubAddSearch.search}  />
     </Stack.Navigator>
   )
 }
@@ -24,4 +25,6 @@ export const OptionAdd = {
   ),
   headerShown:false
 }
+
+
 

@@ -7,6 +7,7 @@ import DashboardScreen from '../Dashboard/DashboardScreen'
 import EventetailScreen from '../Dashboard/EventetailScreen'
 import ReportScreen from '../Dashboard/ReportScreen'
 import SearchScreen from '../Dashboard/SearchScreen'
+import SearchAssignScreen from '../Dashboard/SearchAssignScreen';
 
 export default function Dashboard({navigation}) {
 
@@ -18,6 +19,7 @@ export default function Dashboard({navigation}) {
       <Stack.Screen name='EventetailScreenSubDashboard' component={EventetailScreen} />
       <Stack.Screen name='reportSubDashboard' component={ReportScreen} />
       <Stack.Screen name='searchSubDashboard' component={SearchScreen} />
+      <Stack.Screen name='searchAssignSubDashboard' component={SearchAssignScreen} />
     </Stack.Navigator>
   )
 }

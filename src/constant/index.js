@@ -15,14 +15,20 @@ export const Server = {
 
     // Add Event
     addEvent:`${ipaddress}/add/addevent`,
+    editEvent:`${ipaddress}/add/updateevent`,
     reviewEvent:`${ipaddress}/add/reviewevent`,
     approveEvent:`${ipaddress}/add/approveevent`,
     closejobEvent:`${ipaddress}/add/closejobevent`,
 
-    // Search Event
+    // Search Event    
+    jobtypenameline:`${ipaddress}/event/getevent`,
 
     // Dashboard
     dashboard:`${ipaddress}/dashboard/dashboard`,
+
+
+    // Search Assign
+    searchAssign:`${ipaddress}/authen/findaccounttoassignjob`,
 
 
 }
