@@ -1,4 +1,4 @@
-import { HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FETCHING, HTTP_DASHBOARD_SUCCESS } from "../constant"
+import { DASHBOARD_REFRESH, HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FETCHING, HTTP_DASHBOARD_SUCCESS } from "../constant"
 
 const initialState = {
     dashboard:{
@@ -8,6 +8,7 @@ const initialState = {
       total:{count:0},
     },
     
+    isRefresh:false,
     isFetching:false,
     isError:false
 }
@@ -23,6 +24,9 @@ export default (state = initialState, { type, payload }) => {
 
   case HTTP_DASHBOARD_FAIL:
     return { ...state, isFetching:false, isError:true }
+
+  case DASHBOARD_REFRESH:
+      return { ...state, isRefresh:isRefresh ? false : true }
 
   default:
     return state

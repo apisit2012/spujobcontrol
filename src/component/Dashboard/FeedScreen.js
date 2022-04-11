@@ -7,21 +7,22 @@ export default function FeedScreen({name, count, onChangeButton}) {
 
   const dashboardReducer = useSelector(({dashboardReducer}) => dashboardReducer);
 
-  const [data, setDate] = React.useState('')
+  const [data] = React.useState(name)
 
-  const conSelectDetail = () =>{
-    setDate(name)
-    onChangeButton(data)
+  const conSelectDetail = async () =>{
+    await onChangeButton(data)
   }
 
   return (
             <TouchableOpacity
               onPress={()=> conSelectDetail()}
-              style={{borderRadius: 20,width: 85,height: 40, backgroundColor:'#fafafa',display: 'flex',justifyContent: 'center',alignItems: 'center',margin: 5}}>
+              style={{borderRadius: 20,width: 73,height: 40, backgroundColor:'#fafafa',display: 'flex',justifyContent: 'center',alignItems: 'center',margin: 5}}>
               <Text style={{fontSize: 11, fontWeight: 'bold' }}>{name}</Text>               
               <View style={{display: 'flex',flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center', width:30}}>
                 <MaterialCommunityIcons name={ name == "pending" 
                                               ?  "clipboard-clock"
+                                              :  name == "review" 
+                                              ?  "book-sync"
                                               :  name == "follow" 
                                               ?  "bell-plus"
                                               :  name == "closejob"
@@ -29,6 +30,8 @@ export default function FeedScreen({name, count, onChangeButton}) {
                                               :  "briefcase-check" }  color={ 
                                                                               name == "pending" 
                                                                               ?  "#A52A2A"
+                                                                              :  name == "review" 
+                                                                              ? "#6699FF"
                                                                               :  name == "follow" 
                                                                               ?  "#1E90FF"
                                                                               :  name == "closejob"

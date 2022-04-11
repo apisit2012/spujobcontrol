@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import DashboardScreen from '../Dashboard/DashboardScreen'
-import EventetailScreen from '../Dashboard/DetailScreen'
+import EventetailScreen from '../Dashboard/EventetailScreen'
 import ReportScreen from '../Dashboard/ReportScreen'
 import SearchScreen from '../Dashboard/SearchScreen'
 

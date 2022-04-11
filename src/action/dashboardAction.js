@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FETCHING, HTTP_DASHBOARD_SUCCESS, Server } from '../constant'
+import { DASHBOARD_REFRESH, HTTP_DASHBOARD_FAIL, HTTP_DASHBOARD_FETCHING, HTTP_DASHBOARD_SUCCESS, Server } from '../constant'
 
 
 export const setStateToFetching = () => ({
@@ -16,6 +16,11 @@ export const setStateToFail = () => ({
   type: HTTP_DASHBOARD_FAIL
 })
 
+export const setStateToDashboardRefresh = () => ({
+  type: DASHBOARD_REFRESH,
+})
+
+
 export const renderpage_dashboard = (id_emp) => {
         return dispatch=> {
             dispatch(setStateToFetching())
@@ -23,4 +28,10 @@ export const renderpage_dashboard = (id_emp) => {
                 dispatch(setStateToSuccess(response.data.message))
             }).catch(err=> dispatch(setStateToFail()))
         }
+}
+
+export const setRefreshDashboard = () => {
+  return dispatch=> {
+    dispatch(setStateToDashboardRefresh())
+}
 }

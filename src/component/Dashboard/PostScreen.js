@@ -1,14 +1,20 @@
 import { View, Text, TouchableOpacity , Image} from 'react-native'
 import React from 'react'
 
-export default function PostScreen({id_creater, create_date, name_jobtype, component, status, no_event, id_status_flow, name}) {
+export default function PostScreen({id_creater, create_date, name_jobtype, component, status, no_event, id_status_flow, name, onPressDetail, id_event}) {
+
+  const [data] = React.useState(id_event)
+
+  const CheckDetail =async () => {
+    await onPressDetail(data)
+  }
 
   return (
         <View style={
           id_status_flow == 1 
           ? {width: 420,height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#A52A2A', borderWidth:1}
           : id_status_flow == 2
-          ? {width: 420,height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#A52A2A', borderWidth:1}
+          ? {width: 420,height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#6699FF', borderWidth:1}
           : id_status_flow == 3
           ? {width: 420,height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#1E90FF', borderWidth:1}
           : id_status_flow == 4
@@ -18,7 +24,9 @@ export default function PostScreen({id_creater, create_date, name_jobtype, compo
           : {width: 420,height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#FFA500', borderWidth:1}
 
         }>
-          <TouchableOpacity style={{width: 420,height: 82,display: 'flex',justifyContent: 'flex-start',alignItems: 'flex-start'}}>
+          <TouchableOpacity 
+          onPress={()=>CheckDetail()}
+          style={{width: 420,height: 82,display: 'flex',justifyContent: 'flex-start',alignItems: 'flex-start'}}>
           <View style={{width: 420,display: 'flex',flexDirection: 'row',marginTop: 2,alignItems: 'center', justifyContent: 'space-between',paddingLeft: 5,paddingRight: 5}}>
                                       <View style={{display: 'flex', flexDirection: 'row'}}>
                                         <Image style={{width: 25,height: 25, borderRadius: 50,marginRight: 5}}

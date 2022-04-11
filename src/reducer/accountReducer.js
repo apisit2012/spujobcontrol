@@ -3,7 +3,8 @@ import { HTTP_ACCOUNT_FAIL, HTTP_ACCOUNT_FETCHING, HTTP_ACCOUNT_SUCCESS } from "
 const initialState = {
     account:{
         id_emp:'2498',
-        name:'apisit phunobthong'
+        name:'apisit phunobthong',
+        level:1
     },
     isfetching:false,
     isError:false
