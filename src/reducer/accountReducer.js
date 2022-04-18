@@ -4,7 +4,8 @@ const initialState = {
     account:{
         id_emp:'2498',
         name:'apisit phunobthong',
-        level:2
+        email:'po-apisit@umcth.com',
+        level:2,
     },
     isfetching:false,
     isError:false

@@ -20,8 +20,6 @@ export default  function EventetailScreen({navigation,route}) {
 
   const usedispatch = useDispatch()
 
-  
-
 
   const fetchAssing = () => {
     axios.post(Server.searchAssign).then(response=>{

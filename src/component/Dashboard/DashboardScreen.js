@@ -70,10 +70,11 @@ export default function DashboardScreen({navigation,route}) {
 
 
     return (
-      <View style={{flex: 1,width: 430, diplay:'flex', justifyContent: 'flex-start', alignItems: 'center',backgroundColor: '#D3D3D3'}}>
+      <View style={{flex: 1, width:'98%', diplay:'flex', justifyContent: 'flex-start', alignItems: 'center',backgroundColor: '#D3D3D3'}}>
         <View style={{ width: 420,backgroundColor: '#d3d3d3', diplay:'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
           <SafeAreaView>
             <ScrollView
+            contentContainerStyle={{ flexGrow: 1, diplay:'flex',justifyContent: 'flex-start', alignItems:'center' }}
             showsHorizontalScrollIndicator={false}
             directionalLockEnabled={true}
             contentInset={{top: 1}}
@@ -85,15 +86,15 @@ export default function DashboardScreen({navigation,route}) {
             }
             >
 
-                <View style={{width: 420,height: 55,display: 'flex',justifyContent: 'flex-start',alignItems: 'center',flexDirection: 'row',backgroundColor:'#fafafa'}}>
-                  <Image style={{width: 35,height: 35,borderRadius: 50,marginLeft: 10, marginRight: 10,}}source={{uri: `https://drive.umcth.co.th/img/employee/2498.jpg`}}/>
+                <View style={{width:'98%',height: 55,display: 'flex',justifyContent: 'flex-start',alignItems: 'center',flexDirection: 'row',backgroundColor:'#fafafa'}}>
+                  <Image style={{width: 35,height: 35,borderRadius: 50,marginLeft: 10, marginRight: 10,}}source={{uri: `https://drive.umcth.co.th/img/employee/${accountReducer.account.id_emp}.jpg`}}/>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('reportSubDashboard')}>
                     <Text>I When To Create Report</Text>
                 </TouchableOpacity>
                 </View>
 
-              <View style={{display:'flex', flexDirection:'row'}}>
+              <View style={{display:'flex', flexDirection:'row',marginLeft:2}}>
                 {button.map((val, index)=>  <FeedScreen name={val.name} count={val.count}  onChangeButton={onChangeButton}  key={index} /> )}
 
               </View>

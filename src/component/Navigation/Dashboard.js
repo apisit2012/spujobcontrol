@@ -16,8 +16,8 @@ export default function Dashboard({navigation}) {
   return (
     <Stack.Navigator initialRouteName='dashboardSubDashboard' >
       <Stack.Screen name='dashboardSubDashboard' component={DashboardScreen} options={OptionSub.dashboard}/>
-      <Stack.Screen name='EventetailScreenSubDashboard' component={EventetailScreen} />
-      <Stack.Screen name='reportSubDashboard' component={ReportScreen} />
+      <Stack.Screen name='EventetailScreenSubDashboard' component={EventetailScreen} options={OptionSub.detail} />
+      <Stack.Screen name='reportSubDashboard' component={ReportScreen} options={OptionSub.report} />
       <Stack.Screen name='searchSubDashboard' component={SearchScreen} />
       <Stack.Screen name='searchAssignSubDashboard' component={SearchAssignScreen} />
     </Stack.Navigator>
@@ -35,5 +35,12 @@ export const OptionDashboard = {
 const OptionSub = {
   dashboard:{
     title: 'IT Task Monitoring',
+  },
+  
+  detail:{
+    title: 'Detail',
+  }, 
+  report:{
+    title: 'Create Report',
   }
 }

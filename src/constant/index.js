@@ -10,9 +10,12 @@ export const DASHBOARD_REFRESH = 'DASHBOARD_REFRESH'
 export const SETCOMPONENT = 'SETCOMPONENT'
 
 
-const ipaddress = "http://172.29.24.39:8089"
+const ipaddress = "http://172.20.10.7:8089"
 
 export const Server = {
+
+    // Account
+    accountFindByPk:`${ipaddress}/authen/findbypk`,
 
     // Add Event
     addEvent:`${ipaddress}/add/addevent`,
@@ -34,4 +37,13 @@ export const Server = {
     // Search Assign
     searchComponent:`${ipaddress}/component/findcomponent`,
 
+
+    // Notificagion
+    render:`${ipaddress}/notification/render`,
+    bange:`${ipaddress}/notification/bange`,
+    read:`${ipaddress}/notification/read`,
+
+
+    // Report
+    findallReport:`${ipaddress}/report/findall`,
 }

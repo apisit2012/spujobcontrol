@@ -9,10 +9,17 @@ export default function Account() {
 
   return (
     <Stack.Navigator initialRouteName="accountSubAccount">
-        <Stack.Screen name='accountSubAccount' component={AccountScreen} />
+        <Stack.Screen name='accountSubAccount' component={AccountScreen} options={Option.account} />
     </Stack.Navigator>
   )
 }
+
+const Option = {
+  account:{
+    title: 'Account',
+  }
+}
+
 
 export const OptionAccount = {
   tabBarLabel: 'Account',

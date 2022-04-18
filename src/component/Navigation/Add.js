@@ -13,10 +13,19 @@ export default function Add() {
 
   return (
     <Stack.Navigator initialRouteName='addSubAdd'>
-      <Stack.Screen name='addSubAdd'  component={AddScreen} />
+      <Stack.Screen name='addSubAdd'  component={AddScreen} options={Option.add} />
       <Stack.Screen name='searchSubAdd'  component={SearchScreen} options={OptionSubAddSearch.search}  />
     </Stack.Navigator>
   )
+}
+
+const Option = {
+  add:{
+    title: 'Create',
+  },
+  search:{
+    title: 'Search Component',
+  },
 }
 
 

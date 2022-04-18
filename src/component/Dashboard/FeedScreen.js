@@ -16,7 +16,7 @@ export default function FeedScreen({name, count, onChangeButton}) {
   return (
             <TouchableOpacity
               onPress={()=> conSelectDetail()}
-              style={{borderRadius: 20,width: 73,height: 40, backgroundColor:'#fafafa',display: 'flex',justifyContent: 'center',alignItems: 'center',margin: 5}}>
+              style={{borderRadius: 20,width: '16%',height: 40, backgroundColor:'#fafafa',display: 'flex',justifyContent: 'center',alignItems: 'center',margin: 5}}>
               <Text style={{fontSize: 11, fontWeight: 'bold' }}>{name}</Text>               
               <View style={{display: 'flex',flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center', width:30}}>
                 <MaterialCommunityIcons name={ name == "pending" 
