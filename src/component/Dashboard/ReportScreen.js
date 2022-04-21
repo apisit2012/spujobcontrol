@@ -13,6 +13,7 @@ export default function ReportScreen() {
   const [refreshing, setRefreshing] = React.useState(false);
   const [check, setCheck] = React.useState(false)
   const [data, setData] = React.useState([]);
+  const [selectData, setSelectData] = React.useState({})
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -30,8 +31,13 @@ export default function ReportScreen() {
     })
   },[])
 
+
+
+
+
   const changeCheck = (id) => {
-    setData([id],{check:data.check ? false : true})
+    setData([id].name = "5555")
+    console.log(data);
   }
 
 
@@ -87,7 +93,7 @@ export default function ReportScreen() {
                                     color={ val.check
                                           ? "#dfdf"
                                           : "#000"
-                                        } size={25} />
+            } size={25} />
           </TouchableOpacity>
         ))}
       </ScrollView>

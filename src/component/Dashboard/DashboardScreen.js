@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, SafeAreaView, Image, TouchableOpacity, Text, RefreshControl } from 'react-native';
+import { View, ScrollView, SafeAreaView, Image, TouchableOpacity, Text, RefreshControl, AsyncStorage } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux'
 import * as dashboardAction from '../../action/dashboardAction'
 

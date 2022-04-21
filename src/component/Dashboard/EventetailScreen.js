@@ -1,4 +1,4 @@
-import { View, Text , Image, TouchableOpacity, TextInput, Alert} from 'react-native'
+import { View, Text , Image, TouchableOpacity, TextInput, Alert, AsyncStorage } from 'react-native'
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Server } from '../../constant';
@@ -128,73 +128,73 @@ export default  function EventetailScreen({navigation,route}) {
 
               <View style={{display:'flex', flexDirection:'row', justifyContent:'space-evenly', alignItems:'center', width: 200, height: 70, backgroundColor:'#fafafa'}}>
 
-                    {accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 1
+                    {accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 1
                      ? <ButtonEdit />
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 2
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 2
                      ? <ButtonEdit />
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 3
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 3
                      ? <ButtonEdit />
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 4
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 4
                      ? <View></View>
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 5
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 5
                      ? <View></View>
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 1
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 1
                      ? <ButtonEdit />
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 2
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 2
                      ? <ButtonEdit />
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 3
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 3
                      ? <ButtonEdit />
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 4
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 4
                      ? <View></View>
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 5
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 5
                      ? <View></View>
                      : <View></View>
                     }
 
-                      {accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 1
+                      {accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 1
                      ? <View></View>
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 2
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 2
                      ? <View></View>
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 3
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 3
                      ? <View></View>
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 4
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 4
                      ? <View></View>
-                     : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 5
+                     : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 5
                      ? <View></View>
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 1
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 1
                      ? <ButtonReject />
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 2
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 2
                      ? <ButtonReject />
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 3
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 3
                      ? <View></View>
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 4
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 4
                      ? <View></View>
-                     : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 5
+                     : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 5
                      ? <View></View>
                      : <View></View>
                     }
 
 
 
-                    {   accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 1
+                    {   accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 1
                       ? <ButtonReview />
-                      : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 2
+                      : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 2
                       ? <View></View>
-                      : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 3
+                      : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 3
                       ? <ButtonClosejbo />
-                      : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 4
+                      : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 4
                       ? <View></View>
-                      : accountReducer.account.level == 1 && route.params.result[0].id_status_flow == 5
+                      : accountReducer.account.levels == 1 && route.params.result[0].id_status_flow == 5
                       ? <View></View>
-                      : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 1
+                      : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 1
                       ? <ButtonApprove />
-                      : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 2
+                      : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 2
                       ? <ButtonApprove />
-                      : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 3
+                      : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 3
                       ? <ButtonClosejbo />
-                      : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 4
+                      : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 4
                       ? <View></View>
-                      : accountReducer.account.level == 2 && route.params.result[0].id_status_flow == 5
+                      : accountReducer.account.levels == 2 && route.params.result[0].id_status_flow == 5
                       ? <View></View>
                       : <View></View>
                     } 
@@ -244,7 +244,7 @@ export default  function EventetailScreen({navigation,route}) {
 
             <View style={{marginTop:20,width: 380, display:'flex',justifyContent:'flex-start',flexDirection:'row', height:50}}>
 
-              {accountReducer.account.level == 2 &&( route.params.result[0].id_status_flow == 1 || route.params.result[0].id_status_flow == 2)
+              {accountReducer.account.levels == 2 &&( route.params.result[0].id_status_flow == 1 || route.params.result[0].id_status_flow == 2)
               ?(
                   <View style={{display:'flex',flexDirection:'row', height:50}}>
                   <Text style={{fontSize:13, fontWeight:'bold', top:17}}>Assign To : </Text>

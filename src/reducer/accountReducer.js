@@ -1,11 +1,11 @@
-import { HTTP_ACCOUNT_FAIL, HTTP_ACCOUNT_FETCHING, HTTP_ACCOUNT_SUCCESS } from "../constant"
+import {  HTTP_LOGIN_FECTHING, HTTP_LOGIN_SUCCESS, HTTP_LOGIN_FAIL } from "../constant"
 
 const initialState = {
     account:{
         id_emp:'2498',
         name:'apisit phunobthong',
         email:'po-apisit@umcth.com',
-        level:2,
+        levels:2,
     },
     isfetching:false,
     isError:false
@@ -14,13 +14,13 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
 
-  case HTTP_ACCOUNT_FETCHING:
+  case HTTP_LOGIN_FECTHING:
     return { ...state, isfetching:true, isError:false }
 
-  case HTTP_ACCOUNT_SUCCESS:
+  case HTTP_LOGIN_SUCCESS:
     return { ...state, account:payload, isfetching:false, isError:false }
 
-  case HTTP_ACCOUNT_FAIL:
+  case HTTP_LOGIN_FAIL:
      return { ...state, isfetching:false, isError:true }
 
   default:
