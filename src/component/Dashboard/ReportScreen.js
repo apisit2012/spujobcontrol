@@ -1,4 +1,4 @@
-import { View, ScrollView, SafeAreaView, Image, TouchableOpacity, Text, RefreshControl } from 'react-native';
+import {Alert, View, ScrollView, SafeAreaView, Image, TouchableOpacity, Text, RefreshControl } from 'react-native';
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,9 +11,8 @@ export default function ReportScreen() {
 
   
   const [refreshing, setRefreshing] = React.useState(false);
-  const [check, setCheck] = React.useState(false)
   const [data, setData] = React.useState([]);
-  const [selectData, setSelectData] = React.useState({})
+  const [selectData, setSelectData] = React.useState([])
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -24,20 +23,31 @@ export default function ReportScreen() {
     return new Promise(resolve => setTimeout(resolve, timeout));
   }
 
+  const create_report = () => {
+    var result = data.filter(val => val.check == true )
+    result[0].id_emp = accountReducer.account.id_emp
+    axios.post(Server.createreport,result).then(response=>{
+      if(response.data.result == "OK"){
+        Alert.alert("Information", "Create Report Success")
+      }
+    }).catch(error=>{
+
+    })
+  }
+  
   React.useEffect(()=>{
     axios.post(Server.findallReport).then(response=>{
       setData(response.data.message)
-      
     })
   },[])
 
-
-
-
-
-  const changeCheck = (id) => {
-    setData([id].name = "5555")
-    console.log(data);
+  const changeCheck =async (id) => {
+    var datas = await data.filter(val => val.check != true)
+    await datas.push({...data[id], check: data.check ? false : true})
+    datas.concat()
+    setData(datas)
+    const result = await data[id].no_event
+    setSelectData([ result, ...selectData])
   }
 
 
@@ -57,7 +67,9 @@ export default function ReportScreen() {
       <View>
 
       </View>
-      <TouchableOpacity style={{width:60, height:30, backgroundColor:'#CCCCFF', display:'flex'
+      <TouchableOpacity 
+      onPress={()=> create_report() }
+      style={{width:60, height:30, backgroundColor:'#CCCCFF', display:'flex'
     ,justifyContent:'center',alignItems:'center'}}>
         <Text style={{color:'#CC00FF', fontWeight:'bold'}}>Create</Text>
       </TouchableOpacity>
@@ -78,7 +90,7 @@ export default function ReportScreen() {
         {data.map((val, index)=>(
           <TouchableOpacity 
           onPress={()=> 
-            changeCheck(index)
+            changeCheck(index, val.no_event)
             }
           // onPress={()=> setData([{...data,check: data.check ? false : true}])
           

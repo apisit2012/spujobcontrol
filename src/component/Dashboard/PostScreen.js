@@ -12,21 +12,21 @@ export default function PostScreen({id_creater, create_date, name_jobtype, compo
   return (
         <View style={
           id_status_flow == 1 
-          ? {width:'95%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#A52A2A', borderWidth:1}
+          ? {width:'100%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#A52A2A', borderWidth:1}
           : id_status_flow == 2
-          ? {width:'95%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#6699FF', borderWidth:1}
+          ? {width:'100%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#6699FF', borderWidth:1}
           : id_status_flow == 3
           ? {width:'95%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#1E90FF', borderWidth:1}
           : id_status_flow == 4
-          ? {width:'95%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#32CD32', borderWidth:1}
+          ? {width:'100%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#32CD32', borderWidth:1}
           : id_status_flow == 5
-          ? {width:'95%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#A52A2A', borderWidth:1}
-          : {width:'95%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#FFA500', borderWidth:1}
+          ? {width:'100%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#A52A2A', borderWidth:1}
+          : {width:'100%',height: 81,backgroundColor: '#fff',marginTop: 5,display: 'flex',justifyContent: 'space-between',alignItems: 'flex-start', borderColor:'#FFA500', borderWidth:1}
 
         }>
           <TouchableOpacity 
           onPress={()=>CheckDetail()}
-          style={{width:'100%',height: 82,display: 'flex',justifyContent: 'flex-start',alignItems: 'flex-start'}}>
+          style={{width:'98%',height: 82,display: 'flex',justifyContent: 'flex-start',alignItems: 'flex-start'}}>
           <View style={{width:'98%',display: 'flex',flexDirection: 'row',marginTop: 2,alignItems: 'center', justifyContent: 'space-between',paddingLeft: 5,paddingRight: 5}}>
                                       <View style={{display: 'flex', flexDirection: 'row'}}>
                                         <Image style={{width: 25,height: 25, borderRadius: 50,marginRight: 5}}

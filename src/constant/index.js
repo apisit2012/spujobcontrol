@@ -17,7 +17,7 @@ export const SETCOMPONENT = 'SETCOMPONENT'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
-const ipaddress = "http://172.29.24.204:8089"
+const ipaddress = "http://172.29.25.186:8089"
 
 export const Server = {
 
@@ -53,9 +53,5 @@ export const Server = {
 
     // Report
     findallReport:`${ipaddress}/report/findall`,
+    createreport:`${ipaddress}/report/createreport`,
 }
-const data=[
-    {id:1, name:"iphone"},
-    {id:2, name:"samsung"},
-    {id:3, name:"vivo"}
-]

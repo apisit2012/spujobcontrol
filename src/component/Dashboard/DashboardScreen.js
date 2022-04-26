@@ -2,6 +2,7 @@ import React from 'react'
 import { View, ScrollView, SafeAreaView, Image, TouchableOpacity, Text, RefreshControl, AsyncStorage } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux'
 import * as dashboardAction from '../../action/dashboardAction'
+import { LineChart} from "react-native-chart-kit";
 
 import PostScreen from './PostScreen'
 import FeedScreen from './FeedScreen'
@@ -23,6 +24,7 @@ export default function DashboardScreen({navigation,route}) {
     const [post, SetPost] = React.useState([])
     const [data, setData] = React.useState()
     const [button, setButton] = React.useState([]);
+    const [chart, setChart] = React.useState([]);
 
     const [refreshing, setRefreshing] = React.useState(false);
 
@@ -70,7 +72,7 @@ export default function DashboardScreen({navigation,route}) {
 
 
     return (
-      <View style={{flex: 1, width:'98%', diplay:'flex', justifyContent: 'flex-start', alignItems: 'center',backgroundColor: '#D3D3D3'}}>
+      <View style={{flex: 1, width:'100%', diplay:'flex', justifyContent: 'flex-start', alignItems: 'center',backgroundColor: '#D3D3D3'}}>
         <View style={{ width: 420,backgroundColor: '#d3d3d3', diplay:'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
           <SafeAreaView>
             <ScrollView
@@ -86,7 +88,7 @@ export default function DashboardScreen({navigation,route}) {
             }
             >
 
-                <View style={{width:'98%',height: 55,display: 'flex',justifyContent: 'flex-start',alignItems: 'center',flexDirection: 'row',backgroundColor:'#fafafa'}}>
+                <View style={{width:'100%',height: 55,display: 'flex',justifyContent: 'flex-start',alignItems: 'center',flexDirection: 'row',backgroundColor:'#fafafa'}}>
                   <Image style={{width: 35,height: 35,borderRadius: 50,marginLeft: 10, marginRight: 10,}}source={{uri: `https://drive.umcth.co.th/img/employee/${accountReducer.account.id_emp}.jpg`}}/>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('reportSubDashboard')}>
@@ -98,7 +100,7 @@ export default function DashboardScreen({navigation,route}) {
                 {button.map((val, index)=>  <FeedScreen name={val.name} count={val.count}  onChangeButton={onChangeButton}  key={index} /> )}
 
               </View>
-              <ChartScreen  />
+              {/* <ChartScreen  /> */}
 
               { post.map((val)=> <PostScreen  key={val.id_event} id_creater={val.id_creater} create_date={val.create_date}
                 name_jobtype={val.name_jobtype} component={val.component} no_event={val.no_event} id_status_flow={val.id_status_flow} 

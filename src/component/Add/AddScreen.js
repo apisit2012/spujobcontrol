@@ -35,6 +35,23 @@ export default function AddScreen({navigation}) {
       console.log(data);
       axios.post(Server.addEvent,data).then(response=>{
         Alert.alert("Success","บันทึกข้อมูลสำเร็จ")
+        setData({
+          id_emp: accountReducer.account.id_emp,
+          id_jobtype: 1,
+          id_line: 1,
+          workorder: '5000',
+          barc_rules: false,
+          inspec_process: false,
+          mach_documents: false,
+          assem_documents: false,
+          id_creater: accountReducer.account.id_emp,
+          bom: null,
+          xy_data: null,
+          st_laser: null,
+          use_bom: false,
+          use_xy_data: false,
+          use_st_lasermark: false,
+        })
       })
     }
   }
